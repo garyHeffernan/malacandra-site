@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Malacandra Partners</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Source+Serif+4:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper: #F7EFDA;       /* the golden dome, flat and pale */
+    --paper-deep: #EEE0B8;  /* the gold ocean in the offing */
+    --ink: #1B3329;         /* wave-slopes: emerald deepening to blue-green */
+    --ink-soft: #4C6358;    /* muted, dimmer green, "rich and dim" */
+    --ink-faint: #8B9C8D;
+    --accent: #55365F;      /* the purple storm clouds */
+    --gold: #B4863A;        /* the burning gold of the sky */
+    --line: #DEC998;
+    --line-soft: #EADFB9;
+    --max: 760px;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Source Serif 4', Georgia, serif;
+    font-size:17px;
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  ::selection{ background:var(--gold); color:var(--paper); }
+
+  a{ color:inherit; }
+
+  .wrap{
+    max-width:var(--max);
+    margin:0 auto;
+    padding:0 28px;
+  }
+
+  /* ---------- top bar ---------- */
+  .topbar{
+    padding:26px 0 22px;
+    border-bottom:1px solid var(--line);
+    background:var(--paper);
+  }
+  .topbar .wrap{
+    display:flex;
+    align-items:baseline;
+    justify-content:space-between;
+    gap:20px;
+    flex-wrap:wrap;
+  }
+  .mark{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    font-size:19px;
+    letter-spacing:0.01em;
+    color:var(--accent);
+  }
+  .mark em{
+    font-style:italic;
+    font-weight:400;
+    color:var(--ink-soft);
+  }
+  .topnav{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    display:flex;
+    gap:26px;
+  }
+  .topnav a{ text-decoration:none; color:var(--ink-soft); border-bottom:1px solid transparent; }
+  .topnav a:hover{ color:var(--ink); border-bottom-color:var(--gold); }
+
+  /* ---------- hero: the letter ---------- */
+  .hero{ padding:72px 0 56px; }
+  .dateline{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12.5px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--ink-faint);
+    margin-bottom:34px;
+    display:flex;
+    align-items:center;
+    gap:14px;
+  }
+  .dateline::after{
+    content:"";
+    flex:1;
+    height:1px;
+    background:var(--line);
+  }
+  .salut{
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    font-weight:400;
+    font-size:20px;
+    color:var(--ink-soft);
+    margin:0 0 6px;
+  }
+  h1{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    font-size:clamp(32px, 5vw, 46px);
+    line-height:1.15;
+    letter-spacing:-0.01em;
+    margin:0 0 26px;
+    max-width:15ch;
+  }
+  .lede{
+    font-size:18.5px;
+    color:var(--ink-soft);
+    max-width:56ch;
+    margin:0 0 34px;
+  }
+  .sign{
+    display:flex;
+    align-items:center;
+    gap:16px;
+    margin-top:44px;
+  }
+  .sign-name{
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    font-size:22px;
+  }
+  .sign-role{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11.5px;
+    letter-spacing:0.05em;
+    text-transform:uppercase;
+    color:var(--ink-faint);
+    border-left:1px solid var(--line);
+    padding-left:16px;
+  }
+
+  /* ---------- section shell ---------- */
+  section{ padding:56px 0; border-top:1px solid var(--line); }
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11.5px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--accent);
+    margin:0 0 14px;
+  }
+  h2{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    font-size:28px;
+    margin:0 0 30px;
+    max-width:22ch;
+  }
+
+  /* ---------- tenets ---------- */
+  .tenets{
+    display:grid;
+    gap:0;
+  }
+  .tenet{
+    display:grid;
+    grid-template-columns:160px 1fr;
+    gap:24px;
+    padding:26px 0;
+    border-top:1px solid var(--line-soft);
+  }
+  .tenet:first-child{ border-top:none; }
+  .tenet-label{
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    font-size:20px;
+    color:var(--accent);
+  }
+  .tenet-body{ color:var(--ink-soft); font-size:16.5px; }
+  .tenet-body strong{ color:var(--ink); font-weight:600; }
+
+  /* ---------- ledger / record ---------- */
+  .ledger{
+    border:1px solid var(--line);
+    background:var(--paper-deep);
+  }
+  .ledger-head{
+    display:grid;
+    grid-template-columns:1fr auto auto;
+    gap:12px;
+    padding:16px 22px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:var(--ink-faint);
+    border-bottom:1px solid var(--line);
+  }
+  .ledger-row{
+    display:grid;
+    grid-template-columns:1fr auto auto;
+    gap:12px;
+    padding:18px 22px;
+    border-bottom:1px solid var(--line-soft);
+    align-items:baseline;
+  }
+  .ledger-row:last-child{ border-bottom:none; }
+  .ledger-row .yr{ font-family:'Fraunces', serif; font-size:17px; }
+  .ledger-row .num{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:15px;
+    text-align:right;
+  }
+  .num.up{ color:var(--ink); }
+  .num.dim{ color:var(--ink-faint); }
+  .ledger-note{
+    padding:16px 22px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11.5px;
+    color:var(--ink-faint);
+    line-height:1.6;
+    border-top:1px solid var(--line);
+  }
+
+  /* ---------- bio ---------- */
+  .bio{
+    display:grid;
+    grid-template-columns:150px 1fr;
+    gap:34px;
+    align-items:start;
+  }
+  .portrait{
+    width:150px;
+    height:190px;
+    background:
+      linear-gradient(180deg, var(--paper-deep), var(--line-soft));
+    border:1px solid var(--line);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:10.5px;
+    color:var(--ink-faint);
+    text-align:center;
+    letter-spacing:0.04em;
+    text-transform:uppercase;
+    padding:10px;
+  }
+  .bio-copy p{ color:var(--ink-soft); margin:0 0 16px; }
+  .bio-copy p:last-child{ margin-bottom:0; }
+  .bio-copy strong{ color:var(--ink); }
+
+  /* ---------- pull quote ---------- */
+  .pull{
+    margin:0;
+    padding:38px 0;
+    text-align:left;
+  }
+  .pull blockquote{
+    margin:0;
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    font-weight:400;
+    font-size:26px;
+    line-height:1.45;
+    max-width:26ch;
+    position:relative;
+  }
+  .pull svg{ display:block; margin-top:14px; }
+
+  /* ---------- contact ---------- */
+  .contact-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:40px;
+  }
+  .contact-copy p{ color:var(--ink-soft); max-width:38ch; }
+  .field-label{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--ink-faint);
+    margin-bottom:6px;
+  }
+  .field-value{
+    font-size:16.5px;
+    padding-bottom:16px;
+    margin-bottom:16px;
+    border-bottom:1px solid var(--line-soft);
+  }
+  .field-value:last-child{ border-bottom:none; }
+  .cta{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    margin-top:8px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12.5px;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:var(--paper);
+    background:var(--ink);
+    padding:14px 22px;
+    text-decoration:none;
+    border:1px solid var(--ink);
+    transition:background 0.15s ease, color 0.15s ease;
+  }
+  .cta:hover{ background:transparent; color:var(--ink); }
+
+  .disclaimer{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    line-height:1.8;
+    color:var(--ink-faint);
+    max-width:60ch;
+  }
+
+  footer{
+    padding:34px 0 60px;
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    color:var(--ink-faint);
+    letter-spacing:0.04em;
+  }
+
+  @media (max-width:640px){
+    .tenet{ grid-template-columns:1fr; gap:8px; }
+    .bio{ grid-template-columns:1fr; }
+    .portrait{ width:120px; height:150px; }
+    .contact-grid{ grid-template-columns:1fr; }
+    .topnav{ gap:16px; flex-wrap:wrap; }
+    .ledger-head, .ledger-row{ grid-template-columns:1fr auto; }
+    .ledger-head span:nth-child(2), .ledger-row .num.dim{ display:none; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior:auto; }
+    .cta{ transition:none; }
+  }
+</style>
+</head>
+<body>
+
+  <div class="topbar">
+    <div class="wrap">
+      <div class="mark">Malacandra <em>Partners</em></div>
+      <nav class="topnav">
+        <a href="#approach">Approach</a>
+        <a href="#manager">Manager</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </div>
+
+  <div class="wrap">
+
+    <section class="hero" style="border-top:none;">
+      <div class="dateline">Founded 2019 · San Francisco, CA</div>
+      <p class="salut">A note on how this firm is run —</p>
+      <h1>One steward, one strategy, one account that stays entirely your own.</h1>
+      <p class="lede">Malacandra is an outsourced long-term investment practice for individuals, families, and trusts setting capital aside for retirement or legacy. There is no pooled fund. Each client's portfolio is held separately, in their own name, and managed to a single standard: buy what is worth more than it costs, then have the patience to let that be proven right.</p>
+      <div class="sign">
+        <span class="sign-name">R. Fenwick Vane</span>
+        <span class="sign-role">Managing Partner &amp; CIO</span>
+      </div>
+    </section>
+
+    <section id="approach">
+      <div class="eyebrow">How capital is handled</div>
+      <h2>Three things this firm won't compromise on.</h2>
+      <div class="tenets">
+        <div class="tenet">
+          <div class="tenet-label">Opportunism</div>
+          <div class="tenet-body">Capital is put to work <strong>wherever value shows up</strong> — equities, credit, special situations — and just as readily left in cash when nothing on offer is worth owning.</div>
+        </div>
+        <div class="tenet">
+          <div class="tenet-label">Patience</div>
+          <div class="tenet-body">Positions are sized and held for <strong>a full cycle, not a quarter</strong>. Sitting still, and sitting in cash, are both treated as decisions — not as inaction.</div>
+        </div>
+        <div class="tenet">
+          <div class="tenet-label">Alignment</div>
+          <div class="tenet-body"><strong>Most of the manager's own liquid net worth</strong> sits in the same strategy, on the same terms, as every client account — no separate deal for the house.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="pull">
+      <blockquote>
+        "The site's only job is to earn a phone call. Everything past that happens in a room, not a browser."
+        <svg width="120" height="10" viewBox="0 0 120 10" fill="none">
+          <path d="M2 7C20 2 40 2 60 6C80 10 100 4 118 3" stroke="#B4863A" stroke-width="1.4" stroke-linecap="round"/>
+        </svg>
+      </blockquote>
+    </section>
+
+    <section id="manager">
+      <div class="eyebrow">Who runs the firm</div>
+      <h2>One decision-maker, on the record.</h2>
+      <div class="bio">
+        <div class="portrait">Portrait<br>placeholder<br>4:5</div>
+        <div class="bio-copy">
+          <p><strong>R. Fenwick Vane</strong> spent over a decade as a senior investment professional inside a multi-generational family office, before earlier roles in investment banking, equity research, and private wealth management. He holds a degree in economics and is a CFA charterholder. He founded Malacandra in 2019 as an outsourced investment home for a small circle of clients who wanted the same discipline he applies to his own capital.</p>
+          <p>He writes the firm's letters himself, makes every allocation decision himself, and takes every client call himself. There is no research team to credit and no one else to blame.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="eyebrow">Getting in touch</div>
+      <h2>New accounts open to a limited number of clients each year.</h2>
+      <div class="contact-grid">
+        <div class="contact-copy">
+          <p>Malacandra is only available to individuals, families, and trusts who don't need this capital for years and are comfortable with a single, accountable manager. If that describes you, the next step is a conversation, not a form.</p>
+          <a class="cta" href="#">Request the latest letter →</a>
+        </div>
+        <div>
+          <div class="field-value">
+            <div class="field-label">Email</div>
+            fenwick@malacandrapartners.com
+          </div>
+          <div class="field-value">
+            <div class="field-label">Structure</div>
+            Separately managed account, held in your name
+          </div>
+          <div class="field-value">
+            <div class="field-label">Minimum</div>
+            $250,000 for retirement accounts · $500,000 for taxable and trust accounts
+          </div>
+          <div class="field-value">
+            <div class="field-label">Fee &amp; liquidity</div>
+            2% per year, managed · one-year soft lock
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section style="border-top:1px solid var(--line);">
+      <p class="disclaimer">This website is for informational purposes only and does not constitute investment advice or an offer of any advisory service. Malacandra Partners LLC is an SEC-registered investment adviser; registration does not imply a certain level of skill or training. Full details of fees, terms, and risks are disclosed in Malacandra's Form ADV, available upon request.</p>
+    </section>
+
+    <footer>
+      <span>© 2026 Malacandra Partners LLC</span>
+      <span>Form ADV · Privacy · Client Login</span>
+    </footer>
+
+  </div>
+
+</body>
+</html>
